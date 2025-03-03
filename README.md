@@ -23,5 +23,27 @@ Here are [20 samples of financial hypernym](https://github.com/code4nlp1713/code
 We employ a 3-step approach to generate financial hypernyms
 - step 1. **Financial Document Selection**: We identify financial documents by selecting all FineWeb documents with a financial score greater than 0.999.
 - step 2. **We obtain high-frequency words**: We extract high-frequency words from these financial documents, excluding numerical values and commonly used words from Wikipedia.
-- step 3. **We use LLMs to obtain hypernym**: We leverage LLMs to obtain hypernyms for nouns and adjectives in the extracted financial words.
+- step 3. **We use LLMs to obtain hypernym**: We leverage LLMs to obtain hypernyms for nouns in the extracted financial words. Here is the code snippet:
+```python
+from transformers import pipeline
+
+class FinancialHypernymExtractor:
+    def __init__(self):
+        self.fill_mask = pipeline("fill-mask", model="roberta-base")  # Using RoBERTa-base model
+
+    def get_financial_hypernyms(self, word, pos="noun"):
+        if pos == "noun":
+            masked_sentence = f"In financial context, {word} is a type of <mask>."
+        else:  
+            masked_sentence = f"In financial context, something {word} is <mask>."
+
+        predictions = self.fill_mask(masked_sentence)
+        hypernyms = [pred["token_str"].strip() for pred in predictions]  # Cleaning spaces
+        return hypernyms
+
+# Example usage
+extractor = FinancialHypernymExtractor()
+word = "equity"
+financial_hypernym = extractor.get_financial_hypernyms(word)[0]  # Taking the top result
+print(f"Financial Hypernym of '{word}':", financial_hypernym)
 
