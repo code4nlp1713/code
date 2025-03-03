@@ -18,5 +18,10 @@ Where `uuid` is the unique identifier for each document in the FineWeb dataset, 
 - [3,840 financial documents](https://github.com/code4nlp1713/code/blob/main/financial_human_anno_doc.json) (positive class, label: 1)
 - [3,840 non-financial documents](https://github.com/code4nlp1713/code/blob/main/non_financial_human_anno_doc.json) (negative class, label: 0)
 
-
+## Data-2: financial hypernyms generation.
+Here are [20 samples of financial hypernym](https://github.com/code4nlp1713/code/blob/main/financial_hypernym.txt). 
+We employ a 3-step approach to generate financial hypernyms
+- step 1. **Financial Document Selection**: We identify financial documents by selecting all FineWeb documents with a financial score greater than 0.999.
+- step 2. **We obtain high-frequency words**: We extract high-frequency words from these financial documents, excluding numerical values and commonly used words from Wikipedia.
+- step 3. **We use LLMs to obtain hypernym**: We leverage LLMs to obtain hypernyms for nouns and adjectives in the extracted financial words.
 
