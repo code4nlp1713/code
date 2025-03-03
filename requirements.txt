@@ -1,0 +1,6 @@
+trl==0.11.4
+accelerate==1.0.0
+transformers==4.45.2
+torch==2.4.1
+bitsandbytes==0.44.1
+scikit-learn==1.6.1
