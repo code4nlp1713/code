@@ -50,7 +50,7 @@ print(f"Financial Hypernym of '{word}':", financial_hypernym)
 
 ## Code: PPO code for optimal explanation search
 ### Prerequisites
-Please refer to the requirements.txt file to install all the necessary packages, including trl (for PPO), accelerate, and others.
+Please refer to the [requirements.txt](https://github.com/code4nlp1713/code/blob/main/requirements.txt) file to install all the necessary packages, including trl (for PPO), accelerate, and others.
 
 ### Training
 To run the search strategy for refinement of, e.g., 4-grade explanations via feedback from LLMs, we first need to prepare the 4-grade ground truth and then execute the code. Two important arguments to consider are:
