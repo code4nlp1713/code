@@ -55,10 +55,11 @@ Please refer to the [requirements.txt](https://github.com/code4nlp1713/code/blob
 ### Training
 To run the search strategy for refinement of, e.g., 4-grade explanations via feedback from LLMs, we first need to prepare the 4-grade ground truth and then execute the code. Two important arguments to consider are:
 
- - 'nb_epoch' (number of epochs): This defaults to 50. In the experiment, we set it to 50. Please note that for DFS, each epoch involves evaluating the performance on 600 testing instances (in case of 4-grade experiment) after explanation rewriting, which is time costly. <span style="color: red;">**Empirically, 50 epochs take approximately 8 hours with our available computational resources**.</span>
+ - '--nb_epoch' (number of epochs): This defaults to 50. In the experiment, we set it to 50. Please note that for DFS, each epoch involves evaluating the performance on 600 testing instances (in case of 4-grade experiment) after explanation rewriting, which is time costly. <span style="color: red;">**Empirically, 50 epochs take approximately 8 hours with our available computational resources**.</span>
 
  - '--fin': This argument determines whether to incorporate financial hypernyms. When enabled, it uses specific financial terminology to enhance the explanation rewriting.
 
+Please adjust the number of nodes and GPUs per node in [config.yaml](https://github.com/code4nlp1713/code/blob/main/config.yaml) to match your local training environment.
 ```bash
 accelerate launch --config_file config.yaml main_fin_ppo.py --nb_epoch 50 --fin 
 ```
